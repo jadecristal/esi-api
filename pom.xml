@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+        <relativePath/><!-- lookup parent from repository -->
+    </parent>
+    <groupId>red.appl.esi</groupId>
+    <artifactId>esi-api-test</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>esi-api-test</name>
+    <description>ESI API Spring Boot Test</description>
+
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--<dependency>
+            <groupId>red.appl.esi</groupId>
+            <artifactId>openapi-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>4.3.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/esi.json</inputSpec>
+
+                            <generatorName>java</generatorName>
+                            <library>native</library>
+
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <!--<supportingFilesToGenerate>pom.xml,README.md,ApiClient.java,ApiException.java,Configuration.java,ServerConfiguration.java,ServerVariable.java,Pair.java</supportingFilesToGenerate>-->
+
+                            <!--<generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>-->
+
+                            <groupId>red.appl.esi</groupId>
+                            <artifactId>openapi-client</artifactId>
+                            <artifactVersion>0.0.1</artifactVersion>
+
+                            <invokerPackage>red.appl.esi.client</invokerPackage>
+                            <apiPackage>red.appl.esi.client.api</apiPackage>
+                            <modelPackage>red.appl.esi.client.model</modelPackage>
+                            <!--<skip>true</skip>-->
+                            <!--<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>-->
+                            <configOptions>
+                                <snapshotVersion>true</snapshotVersion>
+                                <artifactDescription>OpenAPI Client for CCP EVE ESI</artifactDescription>
+
+                                <!--<sourceFolder>src/main/java</sourceFolder>-->
+                                <!--<java8>true</java8>-->
+                                <dateLibrary>java8</dateLibrary>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
