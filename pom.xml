@@ -16,17 +16,18 @@
 
     <properties>
         <java.version>11</java.version>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
+        </dependency>-->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -35,7 +36,6 @@
             <groupId>red.appl.esi</groupId>
             <artifactId>openapi-client</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>-->
 
         <dependency>
@@ -87,7 +87,7 @@
                             <apiPackage>red.appl.esi.client.api</apiPackage>
                             <modelPackage>red.appl.esi.client.model</modelPackage>
                             <!--<skip>true</skip>-->
-                            <!--<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>-->
+                            <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
                             <configOptions>
                                 <snapshotVersion>true</snapshotVersion>
                                 <artifactDescription>OpenAPI Client for CCP EVE ESI</artifactDescription>
